@@ -19,5 +19,8 @@ const Route = use("Route");
 Route.get("/", () => {
   return { greeting: "Hello world in JSON" };
 });
-Route.post("/register", "AuthController.index");
+Route.post("/register", "AuthController.register");
 Route.post("/create_spot", "SpotController.store");
+Route.get("/list_spot", "SpotController.index");
+Route.get("/dashboard", "DashController.show");
+Route.post("/spots/:spot_id/bookings", "BookingController.store");

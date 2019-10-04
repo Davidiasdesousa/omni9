@@ -4,6 +4,16 @@ const Model = use("App/Models/Spot");
 const Helpers = use("Helpers");
 
 class SpotController {
+  async index({ request }) {
+    const { tech } = request.get();
+
+    const spots = await Model.find({ techs: tech });
+    return {
+      success: true,
+      data: spots
+    };
+  }
+
   async store({ request, response }) {
     const { user_id } = request.headers();
     let data = {};
